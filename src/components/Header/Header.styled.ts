@@ -7,7 +7,7 @@ export const HeaderContainer = styled.header`
   padding: 16px 40px;
   display: flex;
   align-items: center;
-
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
   .arrowLeft{
     display: none;
   }

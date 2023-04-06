@@ -22,7 +22,7 @@ export const HamburguerPhoto = styled.img`
 export const NameProduct = styled.h1`
   color: var(--color-dark-gray);
   font-size: 28px;
-  font-weight: 500;
+  font-weight: 600;
   height: 98px;
   display: flex;
   align-items: center;

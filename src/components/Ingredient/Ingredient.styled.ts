@@ -11,7 +11,7 @@ export const IngredientConteiner = styled.div`
 
 export const TitleIngredient = styled.h2`
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--color-dark-gray);
   margin-top: 17px;
 `
@@ -41,6 +41,7 @@ export const ValueIngredient = styled.h3`
   color: var(--color-orange);
   font-size: 14px;
   margin-bottom: 16px;
+  font-weight: 400;
 `
 
 export const IconQuantityIngredient = styled.img`
