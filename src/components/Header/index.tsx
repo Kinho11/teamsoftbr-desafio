@@ -1,7 +1,6 @@
 import React from 'react'
-import { HeaderContainer, Address, Cart } from './Header.styled'
+import { HeaderContainer, Address, Cart, Login,Nav, InputSearch, LogoCart, AddressText, AddressRoad, TextLoginCart, Logo, QuantityOfItemsCart } from './Header.styled'
 import photo from "../../assets/logo.svg"
-import quantityOfItems from "../../assets/numero.svg"
 import {RiArrowDownSLine, RiArrowLeftSLine} from "react-icons/ri"
 import {BiUserCircle} from "react-icons/bi"
 import {HiOutlineShoppingCart} from "react-icons/hi"
@@ -10,30 +9,35 @@ export const Header: React.FC = () => {
   return (
       <HeaderContainer>
 
-        <i className='arrowLeft'><RiArrowLeftSLine size={23}/></i>
-        
-        <img className='logo' src={photo} alt="logo" />
+        <RiArrowLeftSLine size={23} className='arrowLeft'/>
 
-        <Address>
-          <p>Entrega</p>
-          <h3>R. Antonio Braune, 222</h3>
-          <i><RiArrowDownSLine size={20}/></i>
-        </Address>
+        <Logo src={photo} alt="logo" />
 
-        <input type="text" className='search' placeholder='Busque por estabelecimento ou produtos'/>
+        <Nav>
 
-        <div className='login'>
-          <i><BiUserCircle size={23}/></i>
-          <p>Entrar</p>
-        </div>
+          <Address>
+            <AddressText>Entrega</AddressText>
+            <AddressRoad>R. Antonio Braune, 222</AddressRoad>
+            <RiArrowDownSLine size={20} className='arrowDown'/>
+          </Address>
 
-        <Cart>
-          <div className='logoCart'>
-            <i><HiOutlineShoppingCart size={23}/></i>
-            <img src={quantityOfItems} alt="Quantidade de itens no carrinho" />
-          </div>
-          <p>Carrinho</p>
-        </Cart>
+          <InputSearch type="text" placeholder='Busque por estabelecimento ou produtos'/>
+
+          <Login>
+            <BiUserCircle size={23}/>
+            <TextLoginCart>Entrar</TextLoginCart>
+          </Login>
+
+          <Cart>
+            <LogoCart>
+              <HiOutlineShoppingCart size={23}/>
+              <QuantityOfItemsCart>1</QuantityOfItemsCart>
+            </LogoCart>
+            <TextLoginCart>Carrinho</TextLoginCart>
+          </Cart>
+
+        </Nav>
+
       </HeaderContainer>
   )
 }
