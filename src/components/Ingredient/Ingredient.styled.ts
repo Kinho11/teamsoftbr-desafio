@@ -44,4 +44,5 @@ export const ValueIngredient = styled.h3`
 `
 
 export const IconQuantityIngredient = styled.img`
+  cursor: pointer;
 `

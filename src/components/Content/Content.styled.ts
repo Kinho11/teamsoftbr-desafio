@@ -16,7 +16,7 @@ export const ProductContent = styled.div`
 `
 
 export const HamburguerPhoto = styled.img`
-  margin-top: 48px;
+  margin-top: 65px;
 `
 
 export const NameProduct = styled.h1`
@@ -26,6 +26,8 @@ export const NameProduct = styled.h1`
   height: 98px;
   display: flex;
   align-items: center;
+  margin-top: 10px;
+
 `
 
 export const DescriptionProduct = styled.p`
@@ -38,7 +40,7 @@ export const DescriptionProduct = styled.p`
 export const ProductValue = styled.div`
   display: flex;
   gap: 17px;
-  margin-top: 15px;
+  margin-top: 20px;
 `
 
 export const VlPrice = styled.h1`
@@ -114,5 +116,31 @@ export const FooterIngredient = styled.div`
 export const TextFooterIngredient = styled.p`
   font-size: 14px;
   font-weight: 600;
+  color: var(--color-dark-gray);
+`
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+`
+
+export const QuantityProduct = styled.div`
+  width: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  border: 1px solid var(--color-orange);
+  border-radius: 4px;
+  padding: 15px 13px;
+`
+
+export const IconQuantityProduct = styled.img`
+  cursor: pointer;
+`
+
+export const AmountProduct = styled.p`
+  font-size: 14px;
   color: var(--color-dark-gray);
 `

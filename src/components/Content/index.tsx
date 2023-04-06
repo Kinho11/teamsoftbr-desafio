@@ -1,11 +1,13 @@
 import React from 'react'
-import {ContentContainer, HamburguerPhoto, NameProduct, ProductContent, DescriptionProduct, ProductValue, VlPrice,VlDiscount, IngredientConteiner,IngredientContent,HeaderIngredient,TextHeaderIngredient, ParagraphHeaderIngredient,FooterIngredient,TextFooterIngredient } from "./Content.styled"
+import {ContentContainer, HamburguerPhoto, NameProduct, ProductContent, DescriptionProduct, ProductValue, VlPrice,VlDiscount, IngredientConteiner,IngredientContent,HeaderIngredient,TextHeaderIngredient, ParagraphHeaderIngredient,FooterIngredient,TextFooterIngredient, ButtonContainer, QuantityProduct, IconQuantityProduct,AmountProduct } from "./Content.styled"
 
 import hamburguerPhoto from "../../assets/hamburgerPhoto.svg"
 
 import { Ingredient } from '../Ingredient'
 
-
+import less from "../../assets/less.svg"
+import more from "../../assets/more.svg"
+import { Button } from '../Button'
 
 export const Content: React.FC = () => {
   return (
@@ -47,6 +49,15 @@ export const Content: React.FC = () => {
           <FooterIngredient>
             <TextFooterIngredient>Precisa de Talher?</TextFooterIngredient>
           </FooterIngredient>
+
+          <ButtonContainer>
+            <QuantityProduct>
+              <IconQuantityProduct src={less} alt='icone de menos '/>
+              <AmountProduct>1</AmountProduct>
+              <IconQuantityProduct src={more} alt='icone de mais '/>
+            </QuantityProduct>
+            <Button text='Adicionar'/>
+          </ButtonContainer>
 
         </IngredientContent>
       </IngredientConteiner>

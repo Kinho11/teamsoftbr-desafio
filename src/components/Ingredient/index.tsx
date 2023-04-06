@@ -12,6 +12,8 @@ interface Iingredient {
 }
 
 export const Ingredient: React.FC<Iingredient> = ({ingredientName, value, amount}) => {
+
+
   return (
     <IngredientConteiner>
       <TitleIngredient>{ingredientName}</TitleIngredient>
@@ -20,7 +22,7 @@ export const Ingredient: React.FC<Iingredient> = ({ingredientName, value, amount
         <QuantityIngredientContent>
           {amount === "0" ? <IconQuantityIngredient src={lessGray} alt="icone de menos cinza" /> : <IconQuantityIngredient src={less} alt="icone de menos" /> }
           <AmountIngredient>{amount}</AmountIngredient>
-          <img src={more} alt="icone de mais" />
+          <IconQuantityIngredient src={more} alt="icone de mais" />
 
         </QuantityIngredientContent>
       </QuantityIngredientContainer>
