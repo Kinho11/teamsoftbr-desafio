@@ -6,6 +6,12 @@ export const ContentContainer = styled.section`
   padding: 0px 66px;
   display: flex;
   gap: 112px;
+  @media screen and (max-width: 600px) {
+    max-width: 375px;
+    flex-direction: column;
+    padding: 0px 16px;
+    gap: 34px;
+  }
 `
 
 export const ProductContent = styled.div`
@@ -28,6 +34,10 @@ export const NameProduct = styled.h1`
   align-items: center;
   margin-top: 10px;
 
+  @media screen and (max-width: 600px) {
+    font-size: 18px;
+  }
+
 `
 
 export const DescriptionProduct = styled.p`
@@ -35,6 +45,17 @@ export const DescriptionProduct = styled.p`
   font-size: 20px;
   font-weight: 400;
   line-height: 24px;
+  &::before{
+    content: "Hambúrguer de picanha, molho de picanha, cebola crispy, bacon, queijo cheddar, molho cheddar e pão mix de gergelim";
+  }
+
+  @media screen and (max-width: 600px) {
+    font-size: 16px;
+
+    &::before{
+      content: "Delicioso hambúrguer de picanha, molho de picanha, cebola crispy, bacon, queijo cheddar, molho cheddar e pão mix de gergelim, acompanhamento e bebida.";
+    }
+  }
 `
 
 export const ProductValue = styled.div`
@@ -47,6 +68,11 @@ export const VlPrice = styled.h1`
   font-size: 32px;
   font-weight: 400;
   color: var(--color-second-orange);
+
+  @media screen and (max-width: 600px) {
+    color: var(--color-yellow);
+    font-size: 14px;
+  }
 `
 
 export const VlDiscount = styled.h1`
@@ -64,32 +90,48 @@ export const VlDiscount = styled.h1`
     top: 50%;
     background-color: var(--color-dark-gray);
   }
+
+  @media screen and (max-width: 600px) {
+    font-size: 14px;
+
+    &::before{
+      height: 1px;
+      width: 55px;
+    }
+  }
 `
 
 export const IngredientConteiner = styled.section`
   display: flex;
-  /* align-items: center; */
   max-width:439px ;
   padding: 32px;
   border: 1px solid var(--color-light-gray);
   margin-top: 24px;
   border-radius: 8px;
+
+  @media screen and (max-width: 600px) {
+    border: transparent;
+    padding: 0;
+    margin-top: 0;
+  }
 `
 
 export const IngredientContent = styled.div`
   max-width: 375px;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
 `
 
 export const HeaderIngredient = styled.div`
   background-color: rgba(253, 215, 14, 0.2);
   display: flex;
   flex-direction: column;
-  width: 375px;
   padding: 8px 16px;
   gap: 8px;
+
+  @media screen and (max-width: 600px) {
+    max-width: 343px;
+  }
 `
 
 export const TextHeaderIngredient = styled.h3`
@@ -105,12 +147,31 @@ export const ParagraphHeaderIngredient = styled.p`
 
 export const FooterIngredient = styled.div`
   background-color: rgba(253, 215, 14, 0.2);
-  width: 375px;
   height: 50px;
   margin-top: 9px;
   padding: 8px 16px;
   display: flex;
   align-items: center;
+
+  @media screen and (max-width: 600px) {
+    max-width: 343px;
+  }
+`
+
+export const InputRadioContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 343px;
+  margin-top: 8px;
+  `
+
+export const InputRadioText = styled.label`
+  color: var(--color-dark-gray);
+  font-size: 14px;
+`
+
+export const InputRadio = styled.input `
+
 `
 
 export const TextFooterIngredient = styled.p`
@@ -123,6 +184,11 @@ export const ButtonContainer = styled.div`
   display: flex;
   gap: 16px;
   margin-top: 12px;
+
+  @media screen and (max-width: 600px) {
+    gap: 8px;
+    margin-top: 48px;
+  }
 `
 
 export const QuantityProduct = styled.div`

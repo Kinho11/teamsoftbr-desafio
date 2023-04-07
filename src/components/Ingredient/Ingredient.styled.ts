@@ -7,6 +7,10 @@ export const IngredientConteiner = styled.div`
   flex-direction: column;
   gap: 5px;
   border-bottom: 1px solid #E8A634;
+
+  @media screen and (max-width: 600px) {
+    max-width: 343px;
+  }
 `
 
 export const TitleIngredient = styled.h2`

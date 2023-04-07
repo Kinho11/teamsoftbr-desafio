@@ -1,5 +1,5 @@
 import React from 'react'
-import {ContentContainer, HamburguerPhoto, NameProduct, ProductContent, DescriptionProduct, ProductValue, VlPrice,VlDiscount, IngredientConteiner,IngredientContent,HeaderIngredient,TextHeaderIngredient, ParagraphHeaderIngredient,FooterIngredient,TextFooterIngredient, ButtonContainer, QuantityProduct, IconQuantityProduct,AmountProduct } from "./Content.styled"
+import {ContentContainer, HamburguerPhoto, NameProduct, ProductContent, DescriptionProduct, ProductValue, VlPrice,VlDiscount, IngredientConteiner,IngredientContent,HeaderIngredient,TextHeaderIngredient, ParagraphHeaderIngredient,FooterIngredient,TextFooterIngredient, ButtonContainer, QuantityProduct, IconQuantityProduct,AmountProduct,InputRadioContainer,InputRadioText, InputRadio } from "./Content.styled"
 
 import hamburguerPhoto from "../../assets/hamburgerPhoto.svg"
 
@@ -18,8 +18,7 @@ export const Content: React.FC = () => {
 
         <NameProduct>Oferta Picanha Cheddar Bacon</NameProduct>
 
-        <DescriptionProduct>Hambúrguer de picanha, molho de picanha, cebola crispy, bacon, queijo cheddar, molho cheddar 
-        e pão mix de gergelim</DescriptionProduct>
+        <DescriptionProduct></DescriptionProduct>
 
         <ProductValue>
           <VlPrice>R$31,99</VlPrice>
@@ -48,7 +47,19 @@ export const Content: React.FC = () => {
 
           <FooterIngredient>
             <TextFooterIngredient>Precisa de Talher?</TextFooterIngredient>
+
+
           </FooterIngredient>
+
+          <InputRadioContainer>
+            <InputRadioText>Sim</InputRadioText>
+            <InputRadio type="radio" name='check' />
+          </InputRadioContainer>
+
+          <InputRadioContainer>
+            <InputRadioText>Não</InputRadioText>
+            <InputRadio type="radio" name='check' />
+          </InputRadioContainer>
 
           <ButtonContainer>
             <QuantityProduct>
