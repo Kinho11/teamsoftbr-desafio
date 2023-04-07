@@ -188,6 +188,7 @@ export const ButtonContainer = styled.div`
   @media screen and (max-width: 600px) {
     gap: 8px;
     margin-top: 48px;
+    margin-bottom: 20px;
   }
 `
 
