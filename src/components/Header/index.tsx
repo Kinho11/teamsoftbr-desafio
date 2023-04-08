@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { HeaderContainer, Address, Cart, Login,Nav, InputSearch, LogoCart, AddressText, AddressRoad, TextLoginCart, Logo, QuantityOfItemsCart } from './Header.styled'
 import photo from "../../assets/logo.svg"
 import {RiArrowDownSLine, RiArrowLeftSLine} from "react-icons/ri"
 import {BiUserCircle} from "react-icons/bi"
 import {HiOutlineShoppingCart} from "react-icons/hi"
+import { Popover } from '../Popover'
  
 export const Header: React.FC = () => {
+
+
   return (
       <HeaderContainer>
 

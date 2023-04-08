@@ -159,11 +159,15 @@ export const FooterIngredient = styled.div`
 `
 
 export const InputRadioContainer = styled.div`
-  display: flex;
   justify-content: space-between;
   width: 343px;
   margin-top: 8px;
-  `
+  display: none;
+
+  @media screen and (max-width: 600px) {
+    display: flex;
+  }
+`
 
 export const InputRadioText = styled.label`
   color: var(--color-dark-gray);
@@ -205,6 +209,7 @@ export const QuantityProduct = styled.div`
 
 export const IconQuantityProduct = styled.img`
   cursor: pointer;
+  width: 15px;
 `
 
 export const AmountProduct = styled.p`

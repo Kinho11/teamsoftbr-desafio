@@ -11,7 +11,8 @@ export const ButtonOrange = styled.button`
   color: var(--color-white);
   font-size: 14px;
   font-weight: 500;
-
+  cursor: pointer;
+  
   @media screen and (max-width: 600px) {
     width: 195px;
   }

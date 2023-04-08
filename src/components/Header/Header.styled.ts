@@ -95,6 +95,7 @@ export const Cart = styled.div`
   margin-left: 29px;
   cursor: pointer;
   color: var(--color-red);
+  position: relative;
 `
 
 export const LogoCart = styled.div`
