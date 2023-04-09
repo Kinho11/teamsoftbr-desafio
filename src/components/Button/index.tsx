@@ -1,25 +1,27 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
 
-import { ButtonOrange } from './Button.styled'
-import { Popover } from '../Popover'
+import { ButtonOrange } from "./Button.styled";
+import { Popover } from "../Popover";
 
 interface Ibuttton {
-  text ?: string
+  text?: string;
 }
 
+export const Button: React.FC<Ibuttton> = ({ text }) => {
+  const [showPopover, setShowPopover] = useState(false);
 
-export const Button: React.FC<Ibuttton> = ({text}) => {
-  
-  const [click, setClick] = useState()
+  const Click = () => {
+    setShowPopover(true);
+  };
 
-  const Click = (e: any) => {
-    setClick(e.isTrusted)
-  }
+  setTimeout(() => {
+    setShowPopover(false);
+  }, 5000);
 
   return (
     <>
-     <ButtonOrange onClick={Click}>{text}</ButtonOrange>
-     <Popover cliquei={click}/> 
+      <ButtonOrange onClick={Click}>{text}</ButtonOrange>
+      <Popover open={showPopover} />
     </>
-  )
-}
+  );
+};

@@ -1,90 +1,123 @@
-import React, { useState } from 'react'
-import {ContentContainer, HamburguerPhoto, NameProduct, ProductContent, DescriptionProduct, ProductValue, VlPrice,VlDiscount, IngredientConteiner,IngredientContent,HeaderIngredient,TextHeaderIngredient, ParagraphHeaderIngredient,FooterIngredient,TextFooterIngredient, ButtonContainer, QuantityProduct, IconQuantityProduct,AmountProduct,InputRadioContainer,InputRadioText, InputRadio } from "./Content.styled"
+import React, { useState } from "react";
+import * as S from "./Content.styled";
 
-import hamburguerPhoto from "../../assets/hamburgerPhoto.svg"
+import hamburguerPhoto from "../../assets/hamburgerPhoto.svg";
 
-import { Ingredient } from '../Ingredient'
+import { Ingredient } from "../Ingredient";
 
-import less from "../../assets/less.svg"
-import lessGray from "../../assets/lessGray.svg"
-import more from "../../assets/more.svg"
-import { Button } from '../Button'
+import less from "../../assets/less.svg";
+import lessGray from "../../assets/lessGray.svg";
+import more from "../../assets/more.svg";
+import { Button } from "../Button";
 
-export const Content: React.FC = () => {
-  const [amountt, setAmout] = useState<any>(1)
+import {  IProduct } from "../../utils/interface/itemInterface";
 
+interface IContent {
+  item: IProduct;
+}
+
+export const Content: React.FC<IContent> = ({ item }) => {
+  const [amount, setAmout] = useState<number>(1);
+
+  const ingredients = item.ingredients.filter((item) => item.type === "number");
+  const ingredientsBoolean = item.ingredients.filter((item) => item.type === "boolean");
 
   const adicionar = () => {
-    setAmout((amountt: any) => amountt + 1)
-  }
+    setAmout((amount: number) => amount + 1);
+  };
 
   const diminuir = () => {
-    setAmout((amountt: any) => amountt - 1)
-  }
+    setAmout((amount: number) => amount - 1);
+  };
 
   return (
-    <ContentContainer>
+    <S.ContentContainer>
+      <S.ProductContent>
+        <S.HamburguerPhoto src={hamburguerPhoto} />
+        <S.NameProduct>{item.nm_product}</S.NameProduct>
+        <S.DescriptionProduct>{item.description}</S.DescriptionProduct>
 
-      <ProductContent>
-        <HamburguerPhoto src={hamburguerPhoto}/>
+        <S.ProductValue>
+          <S.VlPrice>R${item.vl_price}</S.VlPrice>
+          <S.VlDiscount>R${item.vl_discount}</S.VlDiscount>
+        </S.ProductValue>
+      </S.ProductContent>
 
-        <NameProduct>Oferta Picanha Cheddar Bacon</NameProduct>
+      <S.IngredientConteiner>
+        <S.IngredientContent>
+          {ingredients.map((item) => {
+            return (
+              <>
+                <S.HeaderIngredient>
+                  <S.TextHeaderIngredient>
+                    Adicionar Ingredientes
+                  </S.TextHeaderIngredient>
 
-        <DescriptionProduct></DescriptionProduct>
+                  <S.ParagraphHeaderIngredient>
+                    Até {item.max_itens} ingredientes.
+                  </S.ParagraphHeaderIngredient>
+                </S.HeaderIngredient>
 
-        <ProductValue>
-          <VlPrice>R$31,99</VlPrice>
-          <VlDiscount>R$34,95</VlDiscount>
-        </ProductValue>
-      </ProductContent>
+                {item.itens.map((item) => (
+                  <Ingredient
+                    key={item.id}
+                    ingredientName={item.nm_item}
+                    value={item.vl_item}
+                    amount={0}
+                  />
+                ))}
+              </>
+            );
+          })}
 
-      <IngredientConteiner>
-        <IngredientContent>
+          {ingredientsBoolean.map((item) => {
+            return (
+              <>
+                <S.FooterIngredient>
+                  <S.TextFooterIngredient>
+                    {item.group}
+                  </S.TextFooterIngredient>
+                </S.FooterIngredient>
 
-          <HeaderIngredient>
+                <S.InputRadioContainer>
+                  <S.InputRadioText>Sim</S.InputRadioText>
+                  <S.InputRadio type="radio" name="check" />
+                </S.InputRadioContainer>
 
-            <TextHeaderIngredient>Adicionar Ingredientes</TextHeaderIngredient>
+                <S.InputRadioContainer>
+                  <S.InputRadioText>Não</S.InputRadioText>
+                  <S.InputRadio type="radio" name="check" />
+                </S.InputRadioContainer>
+              </>
+            );
+          })}
 
-            <ParagraphHeaderIngredient>Até 8 ingredientes.</ParagraphHeaderIngredient>
-
-          </HeaderIngredient>
-
-          <Ingredient ingredientName='Queijo cheddar' value={4.99} amount={2}/>
-
-          <Ingredient ingredientName='Cebola crispy' value={1.50} amount={0}/>
-
-          <Ingredient ingredientName='Molho cheddar' value={3.50} amount={0}/>
-
-          <Ingredient ingredientName='Molho de picanha' value={3.50} amount={1} />
-
-          <FooterIngredient>
-            <TextFooterIngredient>Precisa de Talher?</TextFooterIngredient>
-
-
-          </FooterIngredient>
-
-          <InputRadioContainer>
-            <InputRadioText>Sim</InputRadioText>
-            <InputRadio type="radio" name='check' />
-          </InputRadioContainer>
-
-          <InputRadioContainer>
-            <InputRadioText>Não</InputRadioText>
-            <InputRadio type="radio" name='check' />
-          </InputRadioContainer>
-
-          <ButtonContainer>
-            <QuantityProduct>
-              {amountt === 0 ? <IconQuantityProduct src={lessGray} style={{cursor: 'not-allowed'}}  alt='icone de menos '/> : <IconQuantityProduct src={less} onClick={diminuir} alt='icone de menos '/> }
-              <AmountProduct>{amountt}</AmountProduct>
-              <IconQuantityProduct src={more} onClick={adicionar} alt='icone de mais '/>
-            </QuantityProduct>
-            <Button text='Adicionar'/>
-          </ButtonContainer>
-
-        </IngredientContent>
-      </IngredientConteiner>
-
-    </ContentContainer>
-  )
-}
+          <S.ButtonContainer>
+            <S.QuantityProduct>
+              {amount === 0 ? (
+                <S.IconQuantityProduct
+                  src={lessGray}
+                  style={{ cursor: "not-allowed" }}
+                  alt="icone de menos "
+                />
+              ) : (
+                <S.IconQuantityProduct
+                  src={less}
+                  onClick={diminuir}
+                  alt="icone de menos "
+                />
+              )}
+              <S.AmountProduct>{amount}</S.AmountProduct>
+              <S.IconQuantityProduct
+                src={more}
+                onClick={adicionar}
+                alt="icone de mais "
+              />
+            </S.QuantityProduct>
+            <Button text="Adicionar" />
+          </S.ButtonContainer>
+        </S.IngredientContent>
+      </S.IngredientConteiner>
+    </S.ContentContainer>
+  );
+};

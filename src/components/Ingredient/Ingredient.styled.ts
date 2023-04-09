@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface Props{
+  cursor?: boolean
+}
+
 export const IngredientConteiner = styled.div`
   width: 359px;
   display: flex;
@@ -49,6 +53,14 @@ export const ValueIngredient = styled.h3`
 `
 
 export const IconQuantityIngredient = styled.img`
-  cursor: pointer;
   width: 14px;
+`
+
+export const IconQuantityIngredientContainer = styled.div<Props>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  cursor: ${({ cursor }) => cursor ? 'not-allowed' : 'pointer'};
 `

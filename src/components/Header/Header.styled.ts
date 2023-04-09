@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
-  max-width: 1280px;
+  max-width: 100%;
+  place-content: center;
   background-color: #F4F4F4;
   margin: 0 auto;
   padding: 16px 40px;

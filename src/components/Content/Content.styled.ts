@@ -45,16 +45,9 @@ export const DescriptionProduct = styled.p`
   font-size: 20px;
   font-weight: 400;
   line-height: 24px;
-  &::before{
-    content: "Hambúrguer de picanha, molho de picanha, cebola crispy, bacon, queijo cheddar, molho cheddar e pão mix de gergelim";
-  }
 
   @media screen and (max-width: 600px) {
     font-size: 16px;
-
-    &::before{
-      content: "Delicioso hambúrguer de picanha, molho de picanha, cebola crispy, bacon, queijo cheddar, molho cheddar e pão mix de gergelim, acompanhamento e bebida.";
-    }
   }
 `
 

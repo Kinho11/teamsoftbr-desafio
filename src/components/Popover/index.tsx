@@ -3,13 +3,13 @@ import React from 'react'
 import { PopoverContainer, TitlePopover, IngredientContainerPopover, NameProductPopover,TextIngredientPopover, ListIngredientPopover, IngredientPopover } from './Popover.styled'
 
 interface IClick {
-  cliquei?: any
+  open?: any
 }
 
-export const Popover: React.FC<IClick> = ({cliquei}) => {
+export const Popover: React.FC<IClick> = ({open}) => {
   return (
     <>
-      {cliquei ? <PopoverContainer>
+      {open ? <PopoverContainer>
         <TitlePopover>Adicionado com Sucesso</TitlePopover>
         <IngredientContainerPopover>
           <NameProductPopover>Oferta Cheddar Bacon</NameProductPopover>
