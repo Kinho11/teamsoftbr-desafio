@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 interface Props{
   cursor?: boolean
+  cursorMoreItems?: boolean
+  isZero?: boolean
 }
 
 export const IngredientConteiner = styled.div`
@@ -52,8 +54,15 @@ export const ValueIngredient = styled.h3`
   font-weight: 400;
 `
 
-export const IconQuantityIngredient = styled.img`
+export const IconQuantityIngredientLess = styled.svg<Props>`
   width: 14px;
+  fill: ${({ isZero }) => isZero ? '#AEB6C1' : '#D80000'};
+`
+
+export const IconQuantityIngredientMore = styled.svg<Props>`
+  width: 14px;
+  cursor: ${({ cursorMoreItems }) => cursorMoreItems ? 'not-allowed' : 'pointer'};
+  fill: ${({ cursorMoreItems }) => cursorMoreItems ? '#AEB6C1' : '#D80000'};
 `
 
 export const IconQuantityIngredientContainer = styled.div<Props>`

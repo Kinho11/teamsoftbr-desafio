@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./Content.styled";
 
 import hamburguerPhoto from "../../assets/hamburgerPhoto.svg";
@@ -14,10 +14,14 @@ import {  IProduct } from "../../utils/interface/itemInterface";
 
 interface IContent {
   item: IProduct;
+  setShowItemsCart: React.Dispatch<React.SetStateAction<boolean>>
+  setShowPopover: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const Content: React.FC<IContent> = ({ item }) => {
+export const Content: React.FC<IContent> = ({ item, setShowItemsCart, setShowPopover }) => {
   const [amount, setAmout] = useState<number>(1);
+  const [ingredientsCounter, setIngredientsCounter] = useState<number>(0);
+  const [isIngredientsFull, setIsIngredientsFull] = useState<boolean>(false);
 
   const ingredients = item.ingredients.filter((item) => item.type === "number");
   const ingredientsBoolean = item.ingredients.filter((item) => item.type === "boolean");
@@ -30,6 +34,14 @@ export const Content: React.FC<IContent> = ({ item }) => {
     setAmout((amount: number) => amount - 1);
   };
 
+  useEffect(() => {
+    if(ingredientsCounter >= 8){
+      setIsIngredientsFull(true)
+    } else {
+      setIsIngredientsFull(false)
+    }
+  }, [ingredientsCounter])
+
   return (
     <S.ContentContainer>
       <S.ProductContent>
@@ -38,8 +50,8 @@ export const Content: React.FC<IContent> = ({ item }) => {
         <S.DescriptionProduct>{item.description}</S.DescriptionProduct>
 
         <S.ProductValue>
-          <S.VlPrice>R${item.vl_price}</S.VlPrice>
-          <S.VlDiscount>R${item.vl_discount}</S.VlDiscount>
+          <S.VlPrice>R${item.vl_discount}</S.VlPrice>
+          <S.VlDiscount>R${item.vl_price}</S.VlDiscount>
         </S.ProductValue>
       </S.ProductContent>
 
@@ -64,6 +76,8 @@ export const Content: React.FC<IContent> = ({ item }) => {
                     ingredientName={item.nm_item}
                     value={item.vl_item}
                     amount={0}
+                    setIngredientsCounter={setIngredientsCounter}
+                    isIngredientsFull={isIngredientsFull}
                   />
                 ))}
               </>
@@ -114,7 +128,7 @@ export const Content: React.FC<IContent> = ({ item }) => {
                 alt="icone de mais "
               />
             </S.QuantityProduct>
-            <Button text="Adicionar" />
+            <Button text="Adicionar" setShowPopover={setShowPopover}  setShowItemsCart={setShowItemsCart} />
           </S.ButtonContainer>
         </S.IngredientContent>
       </S.IngredientConteiner>

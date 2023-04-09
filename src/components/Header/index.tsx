@@ -1,11 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import * as S from "./Header.styled";
 import photo from "../../assets/logo.svg";
 import { RiArrowDownSLine, RiArrowLeftSLine } from "react-icons/ri";
 import { BiUserCircle } from "react-icons/bi";
 import { HiOutlineShoppingCart } from "react-icons/hi";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
+import { Popover } from "../Popover";
 
-export const Header: React.FC = () => {
+interface IHeader {
+  showItemsCart: boolean;
+  showPopover: boolean
+}
+
+export const Header: React.FC<IHeader> = ({ showItemsCart, showPopover }) => {
+  const isButtonClicked = useSelector((state: RootState) => state.showItemsCart);
+
+  console.log(isButtonClicked);
+  
+
   return (
     <S.HeaderContainer>
       <RiArrowLeftSLine size={23} className="arrowLeft" />
@@ -32,9 +45,10 @@ export const Header: React.FC = () => {
         <S.Cart>
           <S.LogoCart>
             <HiOutlineShoppingCart size={23} />
-            <S.QuantityOfItemsCart>1</S.QuantityOfItemsCart>
+            {showItemsCart && <S.QuantityOfItemsCart>1</S.QuantityOfItemsCart>}
           </S.LogoCart>
           <S.TextLoginCart>Carrinho</S.TextLoginCart>
+           {showPopover && <Popover/> }
         </S.Cart>
       </S.Nav>
     </S.HeaderContainer>

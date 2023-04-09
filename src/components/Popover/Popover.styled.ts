@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const PopoverContainer = styled.div`
  position: absolute;
-  top: 60px;
-  right: 280px;
+  top: 45px;
+  right: -90px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
   z-index: 100;
   &::before{

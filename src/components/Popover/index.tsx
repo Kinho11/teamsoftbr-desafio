@@ -9,7 +9,7 @@ interface IClick {
 export const Popover: React.FC<IClick> = ({open}) => {
   return (
     <>
-      {open ? <PopoverContainer>
+      <PopoverContainer>
         <TitlePopover>Adicionado com Sucesso</TitlePopover>
         <IngredientContainerPopover>
           <NameProductPopover>Oferta Cheddar Bacon</NameProductPopover>
@@ -21,7 +21,7 @@ export const Popover: React.FC<IClick> = ({open}) => {
             <IngredientPopover>Molho Especial</IngredientPopover>
           </ListIngredientPopover>
         </IngredientContainerPopover>
-      </PopoverContainer> : ""  }
+      </PopoverContainer>
       
     
     </>
