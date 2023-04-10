@@ -12,6 +12,13 @@ export const ButtonOrange = styled.button`
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
+  transition: .5s;
+
+  &:hover{
+    transform: scale(1.02);
+    background-color: #ee9a4c;
+    transition: .5s;
+  }
   
   @media screen and (max-width: 600px) {
     width: 195px;

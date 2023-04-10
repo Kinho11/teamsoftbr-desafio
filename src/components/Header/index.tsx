@@ -4,20 +4,13 @@ import photo from "../../assets/logo.svg";
 import { RiArrowDownSLine, RiArrowLeftSLine } from "react-icons/ri";
 import { BiUserCircle } from "react-icons/bi";
 import { HiOutlineShoppingCart } from "react-icons/hi";
+import { Popover } from "../Popover";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
-import { Popover } from "../Popover";
 
-interface IHeader {
-  showItemsCart: boolean;
-  showPopover: boolean
-}
+export const Header: React.FC = () => {
 
-export const Header: React.FC<IHeader> = ({ showItemsCart, showPopover }) => {
-  const isButtonClicked = useSelector((state: RootState) => state.showItemsCart);
-
-  console.log(isButtonClicked);
-  
+  const {hasItem,clickButton} = useSelector((state: RootState)=> state.cart || {})
 
   return (
     <S.HeaderContainer>
@@ -45,10 +38,10 @@ export const Header: React.FC<IHeader> = ({ showItemsCart, showPopover }) => {
         <S.Cart>
           <S.LogoCart>
             <HiOutlineShoppingCart size={23} />
-            {showItemsCart && <S.QuantityOfItemsCart>1</S.QuantityOfItemsCart>}
+            {hasItem && <S.QuantityOfItemsCart>1</S.QuantityOfItemsCart>}
           </S.LogoCart>
           <S.TextLoginCart>Carrinho</S.TextLoginCart>
-           {showPopover && <Popover/> }
+          {clickButton && <Popover />}
         </S.Cart>
       </S.Nav>
     </S.HeaderContainer>

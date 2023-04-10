@@ -1,12 +1,22 @@
-import React from 'react'
+import React from "react";
 
-import { PopoverContainer, TitlePopover, IngredientContainerPopover, NameProductPopover,TextIngredientPopover, ListIngredientPopover, IngredientPopover } from './Popover.styled'
+import {
+  PopoverContainer,
+  TitlePopover,
+  IngredientContainerPopover,
+  NameProductPopover,
+  TextIngredientPopover,
+  ListIngredientPopover,
+  IngredientPopover,
+} from "./Popover.styled";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
-interface IClick {
-  open?: any
-}
+export const Popover: React.FC = () => {
+  const { ingredientsQuantity } = useSelector(
+    (state: RootState) => state.cart || {}
+  );
 
-export const Popover: React.FC<IClick> = ({open}) => {
   return (
     <>
       <PopoverContainer>
@@ -15,15 +25,12 @@ export const Popover: React.FC<IClick> = ({open}) => {
           <NameProductPopover>Oferta Cheddar Bacon</NameProductPopover>
           <TextIngredientPopover>Ingredientes</TextIngredientPopover>
           <ListIngredientPopover>
-            <IngredientPopover>1 Carne 250gr</IngredientPopover>
-            <IngredientPopover>2 Queijo Cheddar</IngredientPopover>
-            <IngredientPopover>1 Bacon</IngredientPopover>
-            <IngredientPopover>Molho Especial</IngredientPopover>
+            {ingredientsQuantity?.map((item) => (
+              <IngredientPopover>{`${item.quantity} ${item.name}`}</IngredientPopover>
+            ))}
           </ListIngredientPopover>
         </IngredientContainerPopover>
       </PopoverContainer>
-      
-    
     </>
-  )
-}
+  );
+};

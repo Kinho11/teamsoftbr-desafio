@@ -5,8 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import {store} from "./store"
-import {ApiProvider} from "@reduxjs/toolkit/query/react"
-import  {apiProduct}  from './features/api/Api';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -14,9 +12,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ApiProvider api={apiProduct}>
-        <App />
-      </ApiProvider>
+      <App />
     </Provider>
   </React.StrictMode>
 );

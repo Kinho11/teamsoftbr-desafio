@@ -11,28 +11,37 @@ import more from "../../assets/more.svg";
 import { Button } from "../Button";
 
 import {  IProduct } from "../../utils/interface/itemInterface";
+import { useDispatch } from "react-redux";
+import { setHasItem, showItemsCart } from "../../features/slices/cartSlice";
 
 interface IContent {
   item: IProduct;
-  setShowItemsCart: React.Dispatch<React.SetStateAction<boolean>>
-  setShowPopover: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const Content: React.FC<IContent> = ({ item, setShowItemsCart, setShowPopover }) => {
+export const Content: React.FC<IContent> = ({ item }) => {
   const [amount, setAmout] = useState<number>(1);
   const [ingredientsCounter, setIngredientsCounter] = useState<number>(0);
   const [isIngredientsFull, setIsIngredientsFull] = useState<boolean>(false);
 
+  const dispatch = useDispatch()
   const ingredients = item.ingredients.filter((item) => item.type === "number");
   const ingredientsBoolean = item.ingredients.filter((item) => item.type === "boolean");
 
-  const adicionar = () => {
+  const addCounter = () => {
     setAmout((amount: number) => amount + 1);
   };
 
-  const diminuir = () => {
+  const decreaseCounter = () => {
     setAmout((amount: number) => amount - 1);
   };
+
+  const handleClick = () => {
+    dispatch(showItemsCart(true))
+    dispatch(setHasItem(true))
+    setTimeout(() => {
+      dispatch(showItemsCart(false))
+    }, 7000) 
+  }
 
   useEffect(() => {
     if(ingredientsCounter >= 8){
@@ -78,6 +87,7 @@ export const Content: React.FC<IContent> = ({ item, setShowItemsCart, setShowPop
                     amount={0}
                     setIngredientsCounter={setIngredientsCounter}
                     isIngredientsFull={isIngredientsFull}
+                    id={item.id}
                   />
                 ))}
               </>
@@ -117,18 +127,18 @@ export const Content: React.FC<IContent> = ({ item, setShowItemsCart, setShowPop
               ) : (
                 <S.IconQuantityProduct
                   src={less}
-                  onClick={diminuir}
+                  onClick={decreaseCounter}
                   alt="icone de menos "
                 />
               )}
               <S.AmountProduct>{amount}</S.AmountProduct>
               <S.IconQuantityProduct
                 src={more}
-                onClick={adicionar}
+                onClick={addCounter}
                 alt="icone de mais "
               />
             </S.QuantityProduct>
-            <Button text="Adicionar" setShowPopover={setShowPopover}  setShowItemsCart={setShowItemsCart} />
+            <Button onClick={handleClick} text="Adicionar"/>
           </S.ButtonContainer>
         </S.IngredientContent>
       </S.IngredientConteiner>

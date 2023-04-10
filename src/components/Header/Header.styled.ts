@@ -87,6 +87,12 @@ export const Login = styled.div`
   margin-left: 29px;
   cursor: pointer;
   color: var(--color-red);
+  transition: .5s;
+
+  &:hover{
+    transform: scale(1.05);
+    transition: .5s;
+  }
 `
 
 export const Cart = styled.div`
@@ -97,6 +103,12 @@ export const Cart = styled.div`
   cursor: pointer;
   color: var(--color-red);
   position: relative;
+  transition: .5s;
+
+  &:hover{
+    transform: scale(1.05);
+    transition: .5s;
+  }
 `
 
 export const LogoCart = styled.div`

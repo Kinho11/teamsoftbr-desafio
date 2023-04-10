@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import * as S from "./Ingredient.styled";
+import { useDispatch } from "react-redux";
+import { setIngredientsQuantity } from "../../features/slices/cartSlice";
+
 interface Iingredient {
   ingredientName: string;
   value: number;
   amount: number;
   setIngredientsCounter: React.Dispatch<React.SetStateAction<number>>;
   isIngredientsFull: boolean;
+  id: number;
 }
 
 export const Ingredient: React.FC<Iingredient> = ({
@@ -14,23 +18,39 @@ export const Ingredient: React.FC<Iingredient> = ({
   amount,
   setIngredientsCounter,
   isIngredientsFull,
+  id,
 }) => {
+  const dispatch = useDispatch();
   const [valueAdd, setvalueAdd] = useState<number>(amount);
 
-  const adicionar = () => {
+  const addCounter = () => {
     if (!isIngredientsFull) {
       setvalueAdd((valueAdd: number) => valueAdd + 1);
       setIngredientsCounter(
         (ingredientsCounter: number) => ingredientsCounter + 1
       );
+      dispatch(
+        setIngredientsQuantity({
+          name: ingredientName,
+          quantity: valueAdd + 1,
+          id,
+        })
+      );
     }
   };
 
-  const diminuir = () => {
+  const decreaseCounter = () => {
     if (valueAdd > 0) {
       setvalueAdd((valueAdd: number) => valueAdd - 1);
       setIngredientsCounter(
         (ingredientsCounter: number) => ingredientsCounter - 1
+      );
+      dispatch(
+        setIngredientsQuantity({
+          name: ingredientName,
+          quantity: valueAdd - 1,
+          id,
+        })
       );
     }
   };
@@ -43,7 +63,7 @@ export const Ingredient: React.FC<Iingredient> = ({
         <S.QuantityIngredientContent>
           <S.IconQuantityIngredientContainer
             cursor={valueAdd === 0}
-            onClick={diminuir}
+            onClick={decreaseCounter}
           >
             <S.IconQuantityIngredientLess
               isZero={valueAdd === 0}
@@ -55,10 +75,9 @@ export const Ingredient: React.FC<Iingredient> = ({
               <path d="M0 0H14V2H0V0Z" />
             </S.IconQuantityIngredientLess>
           </S.IconQuantityIngredientContainer>
-
           <S.AmountIngredient>{valueAdd}</S.AmountIngredient>
 
-          <S.IconQuantityIngredientContainer onClick={adicionar}>
+          <S.IconQuantityIngredientContainer onClick={addCounter}>
             <S.IconQuantityIngredientMore
               cursorMoreItems={isIngredientsFull}
               width="14"
@@ -73,7 +92,7 @@ export const Ingredient: React.FC<Iingredient> = ({
       </S.QuantityIngredientContainer>
 
       <S.ValueIngredient>
-        +
+        +{" "}
         {value?.toLocaleString("pt-br", { style: "currency", currency: "BRL" })}
       </S.ValueIngredient>
     </S.IngredientConteiner>
